@@ -36,23 +36,19 @@
 ##print(f"equalAVG:{equalAVG}")
 ##print(f"higherAVG:{higherAVG}")
 ####################
-m=[]
-cnt=0
-values = input().split(" ")
-for j in range(len(values)):
-    values[j]=int(values[j])
-values=sorted(values)
-height=int(input())
-for i in range(len(values)-1):
-    if values[i]==values[i+1] == height: cnt+=1
-    if values[i]<=height<values[i+1]:
-        for x in values[0:i+1]:
-            m.append(x)
-        m.append(height)
-        for l in values[i+1:]:
-            m.append(l)
-print(m)
-print(m.index(height)+cnt+1)
+values = list(map(int, input().split()))
+values.sort(reverse=True)
+height = int(input())
+position = len(values)
+for i in range(len(values)):
+    if values[i] < height:  
+        position = i
+        break
+    else:
+        if values[i] == height: 
+            position = i + 1
+
+print(position + 1)
 ################
 ##import random as r
 ##bil=[]
